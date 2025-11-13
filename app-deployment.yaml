@@ -5,6 +5,16 @@ metadata:
   name: my-web-app
   labels:
     app: my-web-app
+  annotations:
+    # 1. 감시할 이미지와 컨테이너 이름 지정: web-app 컨테이너 = bansonj/project1 이미지
+    argocd-image-updater.argoproj.io/image-list: web-app=bansonj/project1
+
+    # 2. 업데이트 전략: 가장 최신 태그를 사용
+    argocd-image-updater.argoproj.io/update-strategy: latest
+
+    # 3. Image Updater가 Git에 커밋할 때 사용할 인증 정보
+    # ArgoCD Repository Secret을 재사용합니다. (예: argocd-repo-server-secret)
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argocd-repo-server-secret
 spec:
   replicas: 2
   selector:
