@@ -1,0 +1,17 @@
+# promtail-values.yaml (PC1)
+
+config:
+  # PC2의 Loki 주소를 클라이언트에 지정
+  clients:
+    - url: http://172.16.6.139:3100/loki/api/v1/push 
+
+# Kubernetes 파드 로그 수집 설정
+scrapeConfigs:
+- jobName: kubernetes-logs
+  staticConfigs:
+  - targets:
+      - localhost
+    labels:
+      job: kubernetes-logs
+      __path__: /var/log/pods/*/*/*.log # Kubernetes 파드 로그 파일 경로
+  # ... (필요하다면 relabeling 설정 추가)

@@ -1,0 +1,13 @@
+# web-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-web-service
+spec:
+  selector:
+    app: my-web-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer # MetalLB가 이 서비스에 IP를 할당
