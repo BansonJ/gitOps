@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: myapp
-          image: bansonj/project1:21
+          image: bansonj/project1:22
           ports:
             - containerPort: 8080
