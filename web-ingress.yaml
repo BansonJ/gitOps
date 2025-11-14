@@ -4,10 +4,9 @@ kind: Ingress
 metadata:
   name: my-web-ingress
 spec:
-  ingressClassName: nginx # 설치한 Ingress Controller 클래스 이름
+  ingressClassName: nginx
   rules:
-  - host: myapp.local
-    http:
+  - http:
       paths:
       - path: /
         pathType: Prefix
@@ -16,3 +15,4 @@ spec:
             name: my-web-service
             port:
               number: 80
+

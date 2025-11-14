@@ -10,4 +10,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-  type: LoadBalancer # MetalLB가 이 서비스에 IP를 할당
+  type: ClusterIP
